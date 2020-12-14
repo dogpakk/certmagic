@@ -31,7 +31,6 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/klauspost/cpuid"
 	"go.uber.org/zap"
 )
 
@@ -327,9 +326,6 @@ func namesFromCSR(csr *x509.CertificateRequest) []string {
 //
 // See https://github.com/mholt/caddy/issues/1674
 func preferredDefaultCipherSuites() []uint16 {
-	if cpuid.CPU.AesNi() {
-		return defaultCiphersPreferAES
-	}
 	return defaultCiphersPreferChaCha
 }
 
